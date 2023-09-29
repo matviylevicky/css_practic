@@ -53,11 +53,20 @@ body {
   flex-wrap: wrap;
   column-gap: 65px;
   row-gap: 130px;
+  perspective: 600px;
 }
 .card {
   flex-basis: 420px;
+  transform: rotateY(-2deg);
+  transition:transform 0.5s linear, box-shadow 0.5s linear ;
 }
-
+.card:nth-child(2n) {
+  transform: rotateY(2deg);
+}
+.card:hover {
+  transform: rotateY(0);
+  box-shadow: 3px 3px 5px -4px rgba(87, 85, 85, 0.705);
+}
 .card-category {
   font-family: "Ubuntu";
   font-weight: 300;
@@ -114,5 +123,29 @@ body {
   font-size: 14px;
   line-height: 19px;
   color: #626262;
+  transition: background-color 0.5s linear, color 0.5s linear, x ;
+  position: relative;
+  overflow: hidden;
+}
+.main-button:hover {
+  background-color: #03a9f4;
+  color:transparent;
+  
+}
+.main-button::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-image: url(/img/add.svg);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 150%);
+  transition: transform 0.5s linear;
+}
+.main-button:hover::after {
+  transform: translate(-50%, -50%);
 }
 
